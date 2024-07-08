@@ -6,13 +6,15 @@
 /*   By: esantana <esantana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 17:14:25 by esantana          #+#    #+#             */
-/*   Updated: 2024/07/08 17:29:16 by esantana         ###   ########.fr       */
+/*   Updated: 2024/07/08 19:46:27 by esantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <fcntl.h>
-#include <unistd.h>
+
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+#include <fcntl.h>
+
 
 #define BUFFER_SIZE 1024
 
@@ -65,10 +67,13 @@ char	*read_from_file(int fd, char *buffer, int *size, int *capacity)
 char	*ft_loadmap(int fd)
 {
 	char	*buffer;
-	int		size = 0, capacity;
+	int		size;
+	int		capacity;
 
+	size = 0;
 	buffer = (char *)malloc(BUFFER_SIZE);
-	size = 0, capacity = BUFFER_SIZE;
+	size = 0;
+	capacity = BUFFER_SIZE;
 	if (fd < 0)
 	{
 		print_error_and_close_fd("Error opening file\n", -1);
@@ -89,9 +94,9 @@ char	*ft_loadmap(int fd)
 
 char	*ft_process_file(char *file_name)
 {
-	int	fd;
-	char *map;
-	
+	int		fd;
+	char	*map;
+
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 	{
