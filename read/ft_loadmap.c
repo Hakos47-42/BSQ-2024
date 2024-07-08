@@ -6,7 +6,7 @@
 /*   By: esantana <esantana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 17:14:25 by esantana          #+#    #+#             */
-/*   Updated: 2024/07/08 19:46:27 by esantana         ###   ########.fr       */
+/*   Updated: 2024/07/08 20:10:43 by esantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 
 #define BUFFER_SIZE 1024
 
+/**
+ * Auxiliar function to print specific error and close file descriptor (fd)
+ */
 void	print_error_and_close_fd(char *message, int fd)
 {
 	write(2, message, strlen(message));
@@ -27,6 +30,9 @@ void	print_error_and_close_fd(char *message, int fd)
 	}
 }
 
+/**
+ * Stinky realloc :)
+ */
 char	*resize_buffer(char *buffer, int *capacity, int size, int fd)
 {
 	char	*new_buffer;
@@ -47,6 +53,9 @@ char	*resize_buffer(char *buffer, int *capacity, int size, int fd)
 	return (new_buffer);
 }
 
+/**
+ * Function that reads the file and returns a buffer of readed chars
+ */
 char	*read_from_file(int fd, char *buffer, int *size, int *capacity)
 {
 	int	bytes_read;
@@ -64,6 +73,9 @@ char	*read_from_file(int fd, char *buffer, int *size, int *capacity)
 	return (buffer);
 }
 
+/**
+ * function for read the input map file.
+ */
 char	*ft_loadmap(int fd)
 {
 	char	*buffer;
@@ -87,11 +99,13 @@ char	*ft_loadmap(int fd)
 	buffer = read_from_file(fd, buffer, &size, &capacity);
 	if (buffer == NULL)
 		return (NULL);
-	// Assuming there's logic here to close the file descriptor and return the buffer
 	close(fd);
 	return (buffer);
 }
 
+/**
+ * Main call for reading the input map file
+ */
 char	*ft_process_file(char *file_name)
 {
 	int		fd;
