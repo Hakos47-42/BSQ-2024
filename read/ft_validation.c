@@ -6,7 +6,7 @@
 /*   By: esantana <esantana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 21:30:29 by esantana          #+#    #+#             */
-/*   Updated: 2024/07/08 22:21:05 by esantana         ###   ########.fr       */
+/*   Updated: 2024/07/08 22:29:18 by esantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void	extract_values_from_first_line(char *buffer, int *intValue, char *chars)
 		return ;
 	}
 	// Extract integer value from line
-	char intStr[10] = {0}; /** *TODO: norminette?? Tamaño máximo??*/
+	char intStr[10] = {0}; // TODO: norminette?? Tamaño máximo??//
 	for (int i = 0; i < newlinePos - 3; i++)
 	{
 		intStr[i] = buffer[i];
