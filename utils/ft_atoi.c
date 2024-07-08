@@ -6,11 +6,11 @@
 /*   By: esantana <esantana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 21:52:44 by esantana          #+#    #+#             */
-/*   Updated: 2024/07/08 22:21:04 by esantana         ###   ########.fr       */
+/*   Updated: 2024/07/08 22:24:50 by esantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/** *TODO: check if this shit works please*/
+// TODO: check if this shit works please//
 int ft_atoi(const char *str) {
     int result = 0;
     int sign = 1;
