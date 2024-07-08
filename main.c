@@ -2,7 +2,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-
+//square matrix_iterator(**char matrix, char *simbols, unsigned int x, unsigned int y)
+/*
+    square = {
+        int x;
+        int y;
+        int n;
+    }
+*/
 // Include the prototype of ft_loadmap here or include the header file where it's declared
 char	*ft_loadmap(int fd);
 
