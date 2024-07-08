@@ -6,7 +6,7 @@
 /*   By: esantana <esantana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 17:14:25 by esantana          #+#    #+#             */
-/*   Updated: 2024/07/08 20:10:43 by esantana         ###   ########.fr       */
+/*   Updated: 2024/07/08 22:21:06 by esantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	print_error_and_close_fd(char *message, int fd)
 }
 
 /**
- * Stinky realloc :)
+ * Stinky realloc:)
+ * TODO: Check for free are well placed. :/
  */
 char	*resize_buffer(char *buffer, int *capacity, int size, int fd)
 {
