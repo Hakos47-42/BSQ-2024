@@ -6,13 +6,13 @@
 /*   By: esantana <esantana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 19:35:58 by esantana          #+#    #+#             */
-/*   Updated: 2024/07/08 19:41:11 by esantana         ###   ########.fr       */
+/*   Updated: 2024/07/08 19:48:56 by esantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	print_error(const char *str)
+void	print_str(const char *str)
 {
 	while (*str)
 	{
