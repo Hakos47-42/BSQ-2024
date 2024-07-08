@@ -9,7 +9,7 @@
 /*   Updated: 2024/07/08 17:29:16 by esantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
@@ -85,4 +85,24 @@ char	*ft_loadmap(int fd)
 	// Assuming there's logic here to close the file descriptor and return the buffer
 	close(fd);
 	return (buffer);
+}
+
+char	*ft_process_file(char *file_name)
+{
+	int	fd;
+	char *map;
+	
+	fd = open(file_name, O_RDONLY);
+	if (fd < 0)
+	{
+		// error open file
+		exit(1);
+	}
+	map = ft_loadmap(fd);
+	if (map == NULL)
+	{
+		close(fd);
+		exit(1);
+	}
+	return (map);
 }
