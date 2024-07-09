@@ -42,3 +42,16 @@ char **create_map(char *buffer, int *args_x_y)
     }
     return (asigned_map(map, buffer));
 }
+
+void clean_map(char **map)
+{
+    int i;
+
+    i = 0;
+    while (map[i])
+    {
+        free(map[i]);
+        i++;
+    }
+    free(map);
+}
