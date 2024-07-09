@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+char **create_map(char *buffer, int *args_y_x);
 char	*ft_process_file(char *file_name);
 void extract_values_from_first_line(char *buffer, int *intValue, char *chars);
 
@@ -48,13 +49,12 @@ int validate_characters_cols(char *buffer, char *chars)
 
 }
 
-int valid_buffer(char *buffer)
+char **valid_buffer(char *buffer)
 {
-    //(void) buffer;
     char chars[3];
     int c_lines = count_lines(buffer);
+    int y_x[2];
     int intValue;
-    int col;
     char *buff;
 
     buff = buffer;
@@ -64,21 +64,16 @@ int valid_buffer(char *buffer)
         printf("Error count lines");
         exit(1);
     }
-    col = validate_characters_cols(buff, chars);
-    printf("intValue: %d\n", intValue);
-    printf("characters %s \n", chars);
-    printf("cols %d\n", col);
-    return (1);
+    y_x[0] = intValue;
+    y_x[1] = validate_characters_cols(buff, chars);
+    return (create_map(buff, y_x));
 }
 
-char *validate_map(char *file_name)
+char **validate_map(char *file_name)
 {
+    char **map;
     char *buffer;
     buffer = ft_process_file(file_name);
-    if (!valid_buffer(buffer))
-    {
-        printf("map error\n");
-        exit(1);
-    }
-    return (buffer);
+    map = valid_buffer(buffer);
+    return (map);
 }
