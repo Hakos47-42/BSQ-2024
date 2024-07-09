@@ -1,10 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-//char *ft_process_file(char *file_name);
-char **validate_map(char *file_name);
-void clean_map(char **map);
-void ft_print_map(char **map, int *y_x);
+#include "bsq.h"
+
 // square matrix_iterator(**char matrix, char *simbols, int *size_yx)
 /*
     square = {

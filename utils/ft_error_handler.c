@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "bsq.h"
 
 /**Prints an array of chars */
 void	print_str(const char *str)

@@ -1,12 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-char **create_map(char *buffer, int *args_y_x);
-char	*ft_process_file(char *file_name);
-void extract_values_from_first_line(char *buffer, int *intValue, char *chars);
-
-int count_lines(char *buffer);
-int find_newline_pos(char *str);
+#include "bsq.h"
 
 int validate_characters_cols(char *buffer, char *chars)
 {
