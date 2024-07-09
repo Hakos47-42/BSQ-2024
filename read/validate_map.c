@@ -13,7 +13,8 @@ char *validate_map(char *file_name)
 {
     char *buffer;
     buffer = ft_process_file(file_name);
-
+    
+    printf("check buffer: %s", buffer);
     if (!valid_buffer(buffer))
     {
         printf("map error\n");
