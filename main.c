@@ -1,9 +1,9 @@
-#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-char	*ft_process_file(char *file_name);
-//square matrix_iterator(**char matrix, char *simbols, unsigned int x, unsigned int y)
+//char *ft_process_file(char *file_name);
+char *validate_map(char *file_name);
+// square matrix_iterator(**char matrix, char *simbols, unsigned int x, unsigned int y)
 /*
     square = {
         int x;
@@ -12,17 +12,16 @@ char	*ft_process_file(char *file_name);
     }
 */
 
-int	main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-    char	*map;
+    char *map;
 
-    if(argc != 2)
-        {
-            // arguments invalid
-            exit(1);
-        }
-
-    map = ft_process_file(argv[1]);
+    if (argc != 2)
+    {
+        // arguments invalid
+        exit(1);
+    }
+    map = validate_map(argv[1]);
 
     printf("%s\n", map);
     free(map);
