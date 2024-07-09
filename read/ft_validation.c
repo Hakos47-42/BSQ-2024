@@ -21,54 +21,19 @@
 int ft_atoi(const char *str);
 void print_str(const char *str);
 
-// This function counts the number of lines in a file
-/* int count_lines(char *filename)
-{
-	int fd;
-	char buffer[BUFFER_SIZE];
-	ssize_t bytes_read;
-	int lines;
-
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		return (-1); // Error opening file
-	lines = 0;
-	while ((bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
-	{
-		for (ssize_t i = 0; i < bytes_read; ++i)
-		{
-			if (buffer[i] == '\n')
-				lines++;
-		}
-	}
-	close(fd);
-	return (lines);
-} */
-
 int count_lines(char *buffer)
 {
-	int fd;
-	//char buffer[BUFFER_SIZE];
-	ssize_t bytes_read = 0;
-	ssize_t i = 0;
+	int i;
 	int lines;
-
-	fd = open(buffer, O_RDONLY);
-	if (fd == -1)
-		return (-1); // Error opening file
 	lines = 0;
-	while ((bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
+	i = 0;
+	while (buffer[i])
 	{
-		while (i < bytes_read )
-		{
-			if (buffer[i] == '\n')
-				lines++;
-			++i;
-		}
+		if (buffer[i] == '\n')
+			lines++;	
+		i++;
 	}
-	close(fd);
-	printf("%d", lines);
-	return (lines);
+	return (lines - 1);
 }
 
 // Function to find the next newline character in a string
@@ -140,6 +105,7 @@ void extract_values_from_first_line(char *buffer, int *intValue, char *chars)
 	chars[0] = buffer[newlinePos - 3];
 	chars[1] = buffer[newlinePos - 2];
 	chars[2] = buffer[newlinePos - 1];
+	chars[3] = '\0';
 	// Check for unique characters, optimice it (?)
 	if (chars[0] == chars[1] || chars[0] == chars[2] || chars[1] == chars[2])
 	{
@@ -148,7 +114,7 @@ void extract_values_from_first_line(char *buffer, int *intValue, char *chars)
 	}
 	// Extract integer value from line
 	char intStr[10] = {0}; // TODO: norminette?? Tamaño máximo??//
-	while (i < newlinePos - 3)
+	while (i < (newlinePos - 3))
 	{
 		intStr[i] = buffer[i];
 		i ++;
