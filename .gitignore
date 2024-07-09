@@ -1,4 +1,8 @@
-.vscode
 *.out
+.vscode
+*.o
+*.gch
 *.swp
 *.swo
+*.out*
+*.gch
