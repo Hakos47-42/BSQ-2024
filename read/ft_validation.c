@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_validation.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esantana <esantana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andloren <andloren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 21:30:29 by esantana          #+#    #+#             */
-/*   Updated: 2024/07/08 22:29:18 by esantana         ###   ########.fr       */
+/*   Updated: 2024/07/09 13:35:26 by andloren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int ft_atoi(const char *str);
 void print_str(const char *str);
 
 // This function counts the number of lines in a file
-int count_lines(char *filename)
+/* int count_lines(char *filename)
 {
 	int fd;
 	char buffer[BUFFER_SIZE];
@@ -42,6 +42,32 @@ int count_lines(char *filename)
 		}
 	}
 	close(fd);
+	return (lines);
+} */
+
+int count_lines(char *buffer)
+{
+	int fd;
+	//char buffer[BUFFER_SIZE];
+	ssize_t bytes_read = 0;
+	ssize_t i = 0;
+	int lines;
+
+	fd = open(buffer, O_RDONLY);
+	if (fd == -1)
+		return (-1); // Error opening file
+	lines = 0;
+	while ((bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
+	{
+		while (i < bytes_read )
+		{
+			if (buffer[i] == '\n')
+				lines++;
+			++i;
+		}
+	}
+	close(fd);
+	printf("%d", lines);
 	return (lines);
 }
 
