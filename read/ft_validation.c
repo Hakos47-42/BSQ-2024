@@ -101,7 +101,9 @@ int custom_atoi(const char *str)
 void extract_values_from_first_line(char *buffer, int *intValue, char *chars)
 {
 	int newlinePos;
+	int i;
 
+	i = 0;
 	newlinePos = find_newline_pos(buffer);
 	if (newlinePos == -1)
 	{
@@ -120,9 +122,10 @@ void extract_values_from_first_line(char *buffer, int *intValue, char *chars)
 	}
 	// Extract integer value from line
 	char intStr[10] = {0}; // TODO: norminette?? Tamaño máximo??//
-	for (int i = 0; i < newlinePos - 3; i++)
+	while (i < newlinePos - 3)
 	{
 		intStr[i] = buffer[i];
+		i ++;
 	}
 	// Parse value to int from retrieved array char(0-9)
 	*intValue = ft_atoi(intStr);
