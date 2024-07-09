@@ -3,18 +3,18 @@
 #include <stdio.h>
 int find_newline_pos(char *str);
 
-void ft_print_map(char **map)
+void ft_print_map(char **map,int *y_x)
 {
-    int i = 0;
     int j = 0;
-    while(map[i])
+    int i = 0;
+    while (i < y_x[0])
     {
-        while(map[i][j])
+        while (j < y_x[1])
         {
             write(1, &map[i][j], 1);
             j++;
         }
-        write(1 ,"\n", 1);
+        write(1, "\n", 1);
         j = 0;
         i++;
     }
@@ -25,17 +25,16 @@ char **asigned_map(char **map, char *buffer)
     int i;
     int lines;
     int col;
-
-    i = find_newline_pos(buffer);
+    i = 0;
     lines = 0;
     col = 0;
+    while (buffer[i] != '\n')
+        i++;
     i++;
-    printf("character : %c\n", buffer[i]);
     while (buffer[i])
     {
         if (buffer[i] != '\n')
         {
-          //  printf("init line %c \n", buffer[i]);
             map[lines][col] = buffer[i];
             col++;
         }
@@ -46,9 +45,6 @@ char **asigned_map(char **map, char *buffer)
         }
         i++;
     }
-    printf("create map");
-    ft_print_map(map);
-    printf("\n");
     return (map);
 }
 
@@ -61,10 +57,10 @@ char **create_map(char *buffer, int *args_y_x)
     i = 0;
     lines = args_y_x[0];
 
-    map = malloc(lines * sizeof(int));
+    map = malloc((lines -1) * sizeof(char *));
     while (lines > i)
     {
-        map[i] = malloc(args_y_x[1] * sizeof(int));
+        map[i] = malloc(args_y_x[1] * sizeof(char));
         i++;
     }
     return (asigned_map(map, buffer));
