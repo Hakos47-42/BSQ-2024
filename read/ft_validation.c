@@ -6,20 +6,14 @@
 /*   By: andloren <andloren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 21:30:29 by esantana          #+#    #+#             */
-/*   Updated: 2024/07/09 13:35:26 by andloren         ###   ########.fr       */
+/*   Updated: 2024/07/09 20:50:03 by varias-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
+#include "bsq.h"
 #include "../constants/error_messages.h"
 
 #define BUFFER_SIZE 1024
-
-int ft_atoi(const char *str);
-void print_str(const char *str);
 
 int count_lines(char *buffer)
 {

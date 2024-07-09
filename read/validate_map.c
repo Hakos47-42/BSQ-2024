@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "bsq.h"
 
 char **create_map(char *buffer, int *args_y_x);
 char	*ft_process_file(char *file_name);

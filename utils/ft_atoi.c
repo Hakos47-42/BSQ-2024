@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "bsq.h"
+
 // TODO: check if this shit works please//
 int ft_atoi(const char *str) {
     int result = 0;

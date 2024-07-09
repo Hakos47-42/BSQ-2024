@@ -1,7 +1,4 @@
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-int find_newline_pos(char *str);
+#include "bsq.h"
 
 void ft_print_map(char **map,int *y_x)
 {

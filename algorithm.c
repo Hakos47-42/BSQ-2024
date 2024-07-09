@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "square.h"
+#include "bsq.h"
 
 /*
 	Checks if the 'obstacle' char is present in up and left directions
