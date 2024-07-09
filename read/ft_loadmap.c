@@ -60,8 +60,9 @@ char	*resize_buffer(char *buffer, int *capacity, int size, int fd)
 char	*read_from_file(int fd, char *buffer, int *size, int *capacity)
 {
 	int	bytes_read;
+	bytes_read = read(fd, buffer + *size, BUFFER_SIZE);
 
-	while ((bytes_read = read(fd, buffer + *size, BUFFER_SIZE)) > 0)
+	while (bytes_read > 0)
 	{
 		*size += bytes_read;
 		if (*size + BUFFER_SIZE > *capacity)
@@ -70,6 +71,7 @@ char	*read_from_file(int fd, char *buffer, int *size, int *capacity)
 			if (buffer == NULL)
 				return (NULL);
 		}
+		bytes_read = read(fd, buffer + *size, BUFFER_SIZE);
 	}
 	return (buffer);
 }
