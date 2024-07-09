@@ -3,6 +3,7 @@
 #include <unistd.h>
 //char *ft_process_file(char *file_name);
 char *validate_map(char *file_name);
+void clean_map(char **map);
 // square matrix_iterator(**char matrix, char *simbols, int *size_yx)
 /*
     square = {
