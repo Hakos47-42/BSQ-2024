@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error_handler.c                                 :+:      :+:    :+:   */
+/*   file_options.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esantana <esantana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/08 19:35:58 by esantana          #+#    #+#             */
-/*   Updated: 2024/07/08 22:29:14 by esantana         ###   ########.fr       */
+/*   Created: 2024/07/09 16:53:11 by pabmart2          #+#    #+#             */
+/*   Updated: 2024/07/10 20:21:52 by varias-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef FILE_OPTIONS_H
+# define FILE_OPTIONS_H
 
-/**Prints an array of chars */
-void	print_str(const char *str)
+typedef struct s_file_options
 {
-	while (*str)
-	{
-		write(1, str, 1);
-		str++;
-	}
-}
+	unsigned int	y_x[2];
+	char			*chars;
+	char			**map;
+}					t_file_options;
+
+#endif

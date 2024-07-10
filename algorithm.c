@@ -6,11 +6,11 @@
 /*   By: pabmart2 <pabmart2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 19:06:29 by pabmart2          #+#    #+#             */
-/*   Updated: 2024/07/09 16:58:14 by pabmart2         ###   ########.fr       */
+/*   Updated: 2024/07/10 20:11:30 by varias-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "bsq.h"
 #include "square.h"
 
 /*
@@ -50,8 +50,8 @@ int	check_obstacles(char **matrix, char symbols[], unsigned int coords[],
 }
 
 /*
-	Iterates diagonally from a 'origin', going +1 in each dimension every step until
-	reaching 'size'.
+	Iterates diagonally from a 'origin',
+	going +1 in each dimension every step until	reaching 'size'.
 */
 int	diagonal_check(char **matrix, char symbols[], unsigned int origin[],
 		unsigned int size[])

@@ -6,15 +6,11 @@
 /*   By: esantana <esantana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 17:14:25 by esantana          #+#    #+#             */
-/*   Updated: 2024/07/08 22:21:06 by esantana         ###   ########.fr       */
+/*   Updated: 2024/07/10 20:42:44 by varias-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <fcntl.h>
-
+#include "bsq.h"
 
 #define BUFFER_SIZE 1024
 
@@ -23,7 +19,7 @@
  */
 void	print_error_and_close_fd(char *message, int fd)
 {
-	write(2, message, strlen(message));
+	write(2, message, ft_strlen(message));
 	if (fd != -1)
 	{
 		close(fd);
@@ -37,6 +33,7 @@ void	print_error_and_close_fd(char *message, int fd)
 char	*resize_buffer(char *buffer, int *capacity, int size, int fd)
 {
 	char	*new_buffer;
+	int		cont;
 
 	*capacity *= 2;
 	new_buffer = (char *)malloc(*capacity);
@@ -46,9 +43,11 @@ char	*resize_buffer(char *buffer, int *capacity, int size, int fd)
 		free(buffer);
 		return (NULL);
 	}
-	for (int cont = 0; cont < size; cont++)
+	cont = 0;
+	while (cont < size)
 	{
 		new_buffer[cont] = buffer[cont];
+		cont++;
 	}
 	free(buffer);
 	return (new_buffer);
@@ -60,8 +59,8 @@ char	*resize_buffer(char *buffer, int *capacity, int size, int fd)
 char	*read_from_file(int fd, char *buffer, int *size, int *capacity)
 {
 	int	bytes_read;
-	bytes_read = read(fd, buffer + *size, BUFFER_SIZE);
 
+	bytes_read = read(fd, buffer + *size, BUFFER_SIZE);
 	while (bytes_read > 0)
 	{
 		*size += bytes_read;
@@ -116,10 +115,7 @@ char	*ft_process_file(char *file_name)
 
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
-	{
-		// error open file
-		exit(1);
-	}
+		ft_error("open file");
 	map = ft_loadmap(fd);
 	if (map == NULL)
 	{

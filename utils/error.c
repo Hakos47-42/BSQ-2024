@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file_options.h                                     :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esantana <esantana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: varias-c <varias-c@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/09 16:53:11 by pabmart2          #+#    #+#             */
-/*   Updated: 2024/07/10 16:54:15 by esantana         ###   ########.fr       */
+/*   Created: 2024/07/10 20:19:32 by varias-c          #+#    #+#             */
+/*   Updated: 2024/07/10 20:21:15 by varias-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILE_OPTIONS_H
-# define FILE_OPTIONS_H
+#include "bsq.h"
 
-typedef struct							s_file_options
+void	ft_error(char *text)
 {
-	int							y_x[2];
-	char						*chars;
-	char						**map;
-} t_file_options;
-
-#endif
+	write(2, "Error:", 6);
+	while (*text)
+	{
+		write(2, &text[0], 1);
+		text++;
+	}
+	write(2, "\n", 1);
+	exit(1);
+}

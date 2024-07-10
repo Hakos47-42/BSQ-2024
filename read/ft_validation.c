@@ -6,38 +6,33 @@
 /*   By: andloren <andloren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 21:30:29 by esantana          #+#    #+#             */
-/*   Updated: 2024/07/09 13:35:26 by andloren         ###   ########.fr       */
+/*   Updated: 2024/07/10 20:33:34 by varias-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
 #include "../constants/error_messages.h"
+#include "bsq.h"
 
 #define BUFFER_SIZE 1024
 
-int ft_atoi(const char *str);
-void print_str(const char *str);
-
-int count_lines(char *buffer)
+int	count_lines(char *buffer)
 {
-	int i;
-	int lines;
+	int	i;
+	int	lines;
+
 	lines = 0;
 	i = 0;
 	while (buffer[i])
 	{
 		if (buffer[i] == '\n')
-			lines++;	
+			lines++;
 		i++;
 	}
 	return (lines - 1);
 }
 
 // Function to find the next newline character in a string
-char *find_newline(char *str)
+char	*find_newline(char *str)
 {
 	while (*str)
 	{
@@ -45,13 +40,13 @@ char *find_newline(char *str)
 			return (str);
 		str++;
 	}
-	return (NULL); // Return NULL if newline not found
+	return (NULL);
 }
 
 // Helper function to find the first occurrence of '\n' in a string
-int find_newline_pos(char *str)
+int	find_newline_pos(char *str)
 {
-	int pos;
+	int	pos;
 
 	pos = 0;
 	while (str[pos] != '\0')
@@ -60,65 +55,59 @@ int find_newline_pos(char *str)
 			return (pos);
 		pos++;
 	}
-	return (-1); // Newline not found
+	return (-1);
 }
 
-// Placeholder for custom_atoi function (implement according to your requirements)
-int custom_atoi(const char *str)
+// Placeholder for custom_atoi function
+// (implement according to your requirements)
+int	custom_atoi(const char *str)
 {
-	int result;
-	int sign;
+	int	result;
+	int	sign;
 
 	result = 0;
 	sign = 1;
-	// Handle negative numbers
 	if (*str == '-')
 	{
 		sign = -1;
 		str++;
 	}
-	// Convert string to integer
 	while (*str)
 	{
 		if (*str < '0' || *str > '9')
-			break; // Non-numeric character
+			break ;
 		result = result * 10 + (*str - '0');
 		str++;
 	}
 	return (result * sign);
 }
 
-// Updated function to extract values and ensure unique characters, form the first line in the example.map
-void extract_values_from_first_line(char *buffer, int *intValue, char *chars)
+// Updated function to extract values and ensure unique characters,
+// form the first line in the example.map
+void	extract_values_from_first_line(char *buffer,
+		int *int_value, char *chars)
 {
-	int newlinePos;
-	int i;
+	int		newline_pos;
+	int		i;
+	char	int_str[10];
 
-	i = 0;
-	newlinePos = find_newline_pos(buffer);
-	if (newlinePos == -1)
-	{
-		print_str(ERR_CHARS_REPEATED);
-		return;
-	}
-	// Extract chars
-	chars[0] = buffer[newlinePos - 3];
-	chars[1] = buffer[newlinePos - 2];
-	chars[2] = buffer[newlinePos - 1];
+	i = -1;
+	while (++i < 10)
+		int_str[i] = 0;
+	newline_pos = find_newline_pos(buffer);
+	if (newline_pos == -1)
+		ft_error(ERR_CHARS_REPEATED);
+	chars[0] = buffer[newline_pos - 3];
+	chars[1] = buffer[newline_pos - 2];
+	chars[2] = buffer[newline_pos - 1];
 	chars[3] = '\0';
-	// Check for unique characters, optimice it (?)
 	if (chars[0] == chars[1] || chars[0] == chars[2] || chars[1] == chars[2])
+		ft_error("Characters must be unique.");
+	i = 0;
+	while (i < (newline_pos - 3))
 	{
-		printf("Error: Characters must be unique.\n");
-		return;
+		int_str[i] = buffer[i];
+		i++;
 	}
-	// Extract integer value from line
-	char intStr[10] = {0}; // TODO: norminette?? Tamaño máximo??//
-	while (i < (newlinePos - 3))
-	{
-		intStr[i] = buffer[i];
-		i ++;
-	}
-	// Parse value to int from retrieved array char(0-9)
-	*intValue = ft_atoi(intStr);
+	*int_value = ft_atoi(int_str);
 }

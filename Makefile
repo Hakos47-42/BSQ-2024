@@ -5,7 +5,10 @@ OBJS = ${SRC:.c=.o}
 all: ${NAME}
 
 bsq: */*.c
-	cc -Wall -Werror -Wextra */*.c *.c -o bsq
+	cc -Wall -Werror -Wextra */*.c *.c -o bsq -I include
+
+debug:
+	cc -Wall -Werror -Wextra -g */*.c *.c -o bsq -I include
 
 clean:
 	rm -f ${OBJS}

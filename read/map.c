@@ -1,13 +1,21 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: varias-c <varias-c@student.42malaga.c      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/10 20:26:17 by varias-c          #+#    #+#             */
+/*   Updated: 2024/07/10 20:26:17 by varias-c         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int		find_newline_pos(char *str);
+#include "bsq.h"
 
-void	ft_print_map(char **map, int *y_x)
+void	ft_print_map(char **map, unsigned int *y_x)
 {
-	int	j;
-	int	i;
+	unsigned int	j;
+	unsigned int	i;
 
 	j = 0;
 	i = 0;
@@ -53,7 +61,7 @@ char	**asigned_map(char **map, char *buffer)
 	return (map);
 }
 
-char	**create_map(char *buffer, int *args_y_x)
+char	**create_map(char *buffer, unsigned int *args_y_x)
 {
 	char	**map;
 	int		lines;
