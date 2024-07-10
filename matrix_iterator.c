@@ -21,8 +21,8 @@ struct					s_square
 
 typedef struct s_square	*t_square;
 
-t_square	matrix_iterator(char **matrix, char symbols[], unsigned int x,
-		unsigned int y)
+t_square	matrix_iterator(char **matrix, char symbols[], int x,
+		int y)
 {
 	int			count_x;
 	int			count_y;

@@ -4,14 +4,14 @@
 #include <unistd.h>
 
 // char *ft_process_file(char *file_name);
-typedef struct
+/*typedef struct
 {
 	int			*y_x;
 	char		*chars;
 	char		**map;
 }				s_file_options;
-
-s_file_options	validate_map(char *file_name);
+*/
+t_file_options	validate_map(char *file_name);
 void			ft_print_map(char **map, int *y_x);
 // square matrix_iterator(**char matrix, char *simbols, int *size_yx)
 /*
@@ -25,7 +25,7 @@ void			ft_print_map(char **map, int *y_x);
 int	main(int argc, char *argv[])
 {
 	printf("a");
-	s_file_options	map_options;
+	t_file_options	map_options;
 
 	if (argc != 2)
 	{
@@ -34,7 +34,7 @@ int	main(int argc, char *argv[])
 	}
 	printf("a");
 	map_options = validate_map(argv[1]);
-	ft_print_map(map_options.map, map_options.y_x);
-	free(map_options.map);
+	/*ft_print_map(map_options.map, map_options.y_x);*/
+	/*free(map_options.map);*/
 	return (0);
 }

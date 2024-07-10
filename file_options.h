@@ -19,6 +19,6 @@ struct							s_file_options
 	char						*chars;
 	char						**map;
 };
-typedef struct s_file_options	*t_file_options;
+typedef struct s_file_options	t_file_options;
 
 #endif
