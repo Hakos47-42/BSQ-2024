@@ -1,6 +1,7 @@
 #include "../file_options.h"
 #include <stdio.h>
 #include <stdlib.h>
+
 /*
 typedef struct
 {
@@ -9,19 +10,19 @@ typedef struct
 	char		**map;
 }				s_file_options;
 */
-char **create_map(char *buffer, int *args_y_x);
-char *ft_process_file(char *file_name);
-void extract_values_from_first_line(char *buffer, int *intValue,
-									char *chars);
+char			**create_map(char *buffer, int *args_y_x);
+char			*ft_process_file(char *file_name);
+void			extract_values_from_first_line(char *buffer, int *intValue,
+					char *chars);
 
-int count_lines(char *buffer);
-int find_newline_pos(char *str);
+int				count_lines(char *buffer);
+int				find_newline_pos(char *str);
 
-int validate_characters_cols(char *buffer, char *chars)
+int	validate_characters_cols(char *buffer, char *chars)
 {
-	int i;
-	int cols;
-	int temp_col;
+	int	i;
+	int	cols;
+	int	temp_col;
 
 	(void)*chars;
 	i = find_newline_pos(buffer);
@@ -58,26 +59,24 @@ int validate_characters_cols(char *buffer, char *chars)
 	return (cols);
 }
 
-t_file_options validate_map(char *file_name)
+t_file_options	validate_map(char *file_name)
 {
-	char *buffer;
-	t_file_options *options;
-	char chars[3];
-	int c_lines;
-	int intValue;
-	char *buff;
+	char			*buffer;
+	t_file_options	*options;
+	char			chars[3];
+	int				int_value;
+	char			*buff;
+
 	options = (t_file_options *)malloc(3 * sizeof(int));
-	printf("a");
 	buffer = ft_process_file(file_name);
-	c_lines = count_lines(buffer);
 	buff = buffer;
-	extract_values_from_first_line(buffer, &intValue, chars);
-	if (c_lines != intValue)
+	extract_values_from_first_line(buffer, &int_value, chars);
+	if (count_lines(buffer) != int_value)
 	{
 		printf("Error count lines");
 		exit(1);
 	}
-	options[0].y_x[0] = intValue;
+	options[0].y_x[0] = int_value;
 	options[0].y_x[1] = validate_characters_cols(buff, chars);
 	options[0].chars = chars;
 	options[0].map = create_map(buff, options[0].y_x);

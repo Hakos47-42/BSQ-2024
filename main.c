@@ -24,7 +24,6 @@ void			ft_print_map(char **map, int *y_x);
 
 int	main(int argc, char *argv[])
 {
-	printf("a");
 	t_file_options	map_options;
 
 	if (argc != 2)
@@ -32,9 +31,9 @@ int	main(int argc, char *argv[])
 		// arguments invalid
 		exit(1);
 	}
-	printf("a");
+
 	map_options = validate_map(argv[1]);
-	/*ft_print_map(map_options.map, map_options.y_x);*/
-	/*free(map_options.map);*/
+	ft_print_map(map_options.map, map_options.y_x);
+	free(map_options.map);
 	return (0);
 }
