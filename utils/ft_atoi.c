@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bsq.h"
+#include "../include/bsq.h"
 
 // TODO: check if this shit works please//
 int ft_atoi(const char *str) {
